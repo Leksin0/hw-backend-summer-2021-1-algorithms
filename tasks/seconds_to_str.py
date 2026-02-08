@@ -2,18 +2,9 @@ __all__ = ("seconds_to_str",)
 
 
 def seconds_to_str(seconds: int) -> str:
-    """Реализует текстовое представление времени.
-
-    Example:
-        >> seconds_to_str(20)
-        20s
-        >> seconds_to_str(60)
-        01m00s
-        >> seconds_to_str(65)
-        01m05s
-        >> seconds_to_str(3700)
-        01h01m40s
-        >> seconds_to_str(93600)
-        01d02h00m00s
-    """
-    raise NotImplementedError
+    d = seconds // 86400
+    h = seconds % 86400 // 3600
+    m = seconds % 3600 // 60
+    s = seconds % 60
+    return ((f"{d:02d}d" if d > 0 else "") + (f"{h:02d}h" if d > 0 or h > 0 else "") +
+            (f"{m:02d}m" if d > 0 or h > 0 or m > 0 else "") + f"{s:02d}s")
