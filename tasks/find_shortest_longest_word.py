@@ -25,4 +25,4 @@ def find_shortest_longest_word(text: str) -> tuple[str, str] | tuple[None, None]
         return None, None
     if len(words) == 1:
         return words[0], words[0]
-    return max(words, key=len), min(words, key=len)
+    return min(words, key=len), max(words, key=len)
